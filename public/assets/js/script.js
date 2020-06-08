@@ -1,4 +1,5 @@
 var typing = false;
+var timeout = undefined;
 var username = 'anonymous';
 const docForm = document.getElementById('docForm')
 
@@ -35,7 +36,8 @@ $(document).ready(function () {
 	});
 
 	$('.editable').on('keydown', function () {
-		socket.emit('typing', uId);
+		typing = true;
+		socket.emit('typing', {user: uId, typing: true);
 	});
 
 	socket.on('display', (data) => {
@@ -43,6 +45,7 @@ $(document).ready(function () {
 			$('.usertag').html(`${data.user} is typing...`);
 		} else {
 			$('.usertag').html("");
+			typing = false;
 		}
 	});
 	var b = $(window).height() / 1.60;
