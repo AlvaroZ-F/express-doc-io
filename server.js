@@ -1,6 +1,6 @@
 var express = require('express');
 var socketio = require('socket.io');
-var http = require('https');
+var http = require('http');
 
 var users = [];
 

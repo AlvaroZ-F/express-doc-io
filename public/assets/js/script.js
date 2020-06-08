@@ -35,11 +35,7 @@ $(document).ready(function () {
 	});
 
 	$('.editable').on('keydown', function () {
-		socket.emit('userTyping', uId);
-	});
-
-	socket.on('useristyping', function (data) {
-		$('.usertag').html(data + 'is typing...');
+		socket.emit('typing', uId);
 	});
 
 	socket.on('display', (data) => {
